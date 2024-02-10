@@ -1,6 +1,7 @@
 package com.shiftux.quadequationsolver;
 
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -52,19 +53,24 @@ public class MyEquation extends BaseObservable {
         int b= Integer.parseInt(getB());
         int c= Integer.parseInt(getC());
 
-        double dis = b*b - 4*a*c;
-        double x1, x2;
-        if (dis>0){
-            x1= (-b + Math.sqrt(dis))/(2*a);
-            x2= (-b - Math.sqrt(dis))/(2*a);
+        if(a!=0){
+            double dis = b*b - 4*a*c;
+            double x1, x2;
+            if (dis>0){
+                x1= (-b + Math.sqrt(dis))/(2*a);
+                x2= (-b - Math.sqrt(dis))/(2*a);
 
-            binding.sol.setText("Root is "+ x1 +" or "+ x2);
-        } else if (dis<0) {
-            binding.sol.setText("No Real Solution(Complex Roots)");
+                binding.sol.setText("Root is "+ x1 +" or "+ x2);
+            } else if (dis<0) {
+                binding.sol.setText("No Real Solution(Complex Roots)");
+            }else{
+                x1= -b/(2*a);
+                binding.sol.setText("x= "+  x1 + ", Only one root.");
+            }
         }else{
-            x1= -b/(2*a);
-            binding.sol.setText("x= "+  x1 + ", Only one root.");
+            Toast.makeText(view.getContext(), "This is a Linear Equation", Toast.LENGTH_SHORT).show();
         }
+        
     }
     public MyEquation() {
     }
