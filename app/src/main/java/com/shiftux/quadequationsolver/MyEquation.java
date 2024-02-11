@@ -68,7 +68,7 @@ public class MyEquation extends BaseObservable {
                 binding.sol.setText("x= "+  x1 + ", Only one root.");
             }
         }else{
-            Toast.makeText(view.getContext(), "This is a Linear Equation", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "This is not a Quadratic Equation", Toast.LENGTH_SHORT).show();
         }
         
     }
